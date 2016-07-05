@@ -38,6 +38,8 @@
  */
 @interface STCollapseTableView : UITableView
 
+@property (nonatomic, assign) BOOL animated;
+
 /**
  *	This property allow to enable/disable the exclusivity.
  *  If YES, only one section is allowed to be open.

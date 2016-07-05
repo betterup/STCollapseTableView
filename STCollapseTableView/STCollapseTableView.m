@@ -217,6 +217,7 @@
     {
 		[self openSection:sectionIndex animated:animated];
 	}
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CollapseSectionToggled" object:nil];
 }
 
 - (BOOL)isOpenSection:(NSUInteger)sectionIndex
@@ -271,7 +272,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	int nbSection = [self.collapseDataSource numberOfSectionsInTableView:tableView];
+	NSInteger nbSection = [self.collapseDataSource numberOfSectionsInTableView:tableView];
     
 	while (nbSection < [self.sectionsStates count])
     {
@@ -322,7 +323,7 @@
     NSInteger index = tap.view.tag;
     if (index >= 0)
     {
-        [self toggleSection:(NSUInteger)index animated:YES];
+        [self toggleSection:(NSUInteger)index animated:_animated];
     }
 }
 
